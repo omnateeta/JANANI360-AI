@@ -463,10 +463,8 @@ export const RegisterMotherForm: React.FC<RegisterMotherFormProps> = ({
       if (res.success) {
         const uniqueTimestamp = Date.now().toString().slice(-4);
         const randomCode = Math.floor(1000 + Math.random() * 9000);
-        const generatedId = `JAN-KA-2026-${uniqueTimestamp}${randomCode}`;
-        const generatedAnc = `RCH-${Math.floor(100000 + Math.random() * 900000)}`;
-        const generatedId = res.motherId || res.mother?.rchId || 'JAN-KA-HVR-' + String(Math.floor(100000 + Math.random() * 900000));
-        const generatedAnc = res.ancNumber || autoAncPreview;
+        const generatedId = res.motherId || res.mother?.rchId || `JAN-KA-HVR-${uniqueTimestamp}${randomCode}`;
+        const generatedAnc = res.ancNumber || autoAncPreview || `RCH-${Math.floor(100000 + Math.random() * 900000)}`;
         setSuccessData({ motherId: generatedId, ancNumber: generatedAnc });
 
         // Save to client local storage for instant PHC Doctor lookup

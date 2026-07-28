@@ -2,8 +2,7 @@ import React from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { useTranslation } from 'react-i18next';
-import { LogOut, ShieldCheck, Heart, LayoutDashboard, Baby, Ambulance, Award } from 'lucide-react';
-import { LogOut, ShieldCheck, Heart, LayoutDashboard, Baby, Ambulance, Stethoscope } from 'lucide-react';
+import { LogOut, ShieldCheck, Heart, LayoutDashboard, Baby, Ambulance, Award, Stethoscope } from 'lucide-react';
 import { logout } from '../store/authSlice';
 import { AppDispatch, RootState } from '../store';
 import { LanguageSelector } from './LanguageSelector';
@@ -103,6 +102,9 @@ export const Navbar: React.FC = () => {
           >
             <Award className="w-3.5 h-3.5 text-amber-400" />
             <span>Welfare Hub</span>
+          </button>
+
+          <button
             onClick={() => navigate('/phc-doctor')}
             className={`px-3 py-2 rounded-xl font-semibold transition flex items-center gap-1.5 ${
               isActive('/phc-doctor') || isActive('/doctor-checkup')
@@ -111,7 +113,7 @@ export const Navbar: React.FC = () => {
             }`}
           >
             <Stethoscope className="w-3.5 h-3.5 text-teal-400" />
-            PHC Doctor
+            <span>PHC Doctor</span>
           </button>
 
           <button

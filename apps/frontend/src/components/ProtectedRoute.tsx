@@ -1,5 +1,4 @@
 import React from 'react';
-import { useTranslation } from 'react-i18next';
 import { Navigate, useLocation } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { RootState } from '../store';
@@ -11,14 +10,11 @@ interface ProtectedRouteProps {
 }
 
 export const ProtectedRoute: React.FC<ProtectedRouteProps> = ({ children, allowedRoles }) => {
-  const { t } = useTranslation();
   const { isAuthenticated, user, isLoading, token } = useSelector((state: RootState) => state.auth);
   const location = useLocation();
 
-  if (isLoading || !user) {
-    if (!isAuthenticated && !token) {
-      return <Navigate to="/login" state={{ from: location }} replace />;
-    }
+  // If loading without cached user profile, show spinner briefly
+  if (isLoading && !user) {
     return (
       <div className="min-h-screen flex items-center justify-center bg-[#0b0f19]">
         <div className="flex flex-col items-center space-y-4">
@@ -29,11 +25,14 @@ export const ProtectedRoute: React.FC<ProtectedRouteProps> = ({ children, allowe
     );
   }
 
-  if (!isAuthenticated) {
+  // Check if session token or user profile exists in storage or state
+  const hasStoredSession = !!token || !!user || !!localStorage.getItem('janani_access_token') || !!localStorage.getItem('janani_user_profile');
+
+  if (!isAuthenticated && !hasStoredSession) {
     return <Navigate to="/login" state={{ from: location }} replace />;
   }
 
-  if (allowedRoles && !allowedRoles.includes(user.role)) {
+  if (allowedRoles && user?.role && !allowedRoles.includes(user.role)) {
     return (
       <div className="min-h-screen flex items-center justify-center bg-[#0b0f19] p-6">
         <div className="glass-panel p-8 rounded-2xl max-w-md w-full border border-red-500/30 text-center">

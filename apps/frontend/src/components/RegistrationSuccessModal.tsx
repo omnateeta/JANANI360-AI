@@ -217,31 +217,6 @@ export const RegistrationSuccessModal: React.FC<RegistrationSuccessModalProps> =
 
         {/* Tab Switcher: Smart ID Card vs Acknowledgement Receipt (Hidden in Print) */}
         <div className="flex rounded-2xl bg-slate-950 p-1.5 border border-slate-800 print:hidden shadow-inner">
-    <div className="fixed inset-0 bg-slate-950/90 backdrop-blur-md z-50 flex items-center justify-center p-4 overflow-y-auto">
-      <div className="bg-slate-900 border border-emerald-500/40 rounded-3xl max-w-5xl w-full p-5 sm:p-7 space-y-6 shadow-2xl relative my-6 print:p-0 print:border-none print:bg-white">
-        {/* Header */}
-        <div className="flex items-center justify-between pb-4 border-b border-slate-800 print:hidden">
-          <div className="flex items-center gap-3.5">
-            <div className="w-12 h-12 rounded-2xl bg-emerald-500/20 border border-emerald-500/40 flex items-center justify-center text-emerald-400">
-              <CheckCircle2 className="w-7 h-7 animate-bounce" />
-            </div>
-            <div>
-              <h3 className="text-lg font-black text-white flex items-center gap-2">
-                ✅ Mother Registered Successfully
-                <Sparkles className="w-4 h-4 text-emerald-400" />
-              </h3>
-              <p className="text-xs text-slate-400">
-                Generated unique Mother ID <span className="font-mono text-emerald-400 font-bold">{motherId}</span>. Digital profile, QR code, and credentials generated.
-              </p>
-            </div>
-          </div>
-          <button type="button" onClick={onClose} className="text-slate-400 hover:text-white p-1">
-            <X className="w-6 h-6" />
-          </button>
-        </div>
-
-        {/* Tab Switcher: Smart ID Card vs Acknowledgement Receipt */}
-        <div className="flex rounded-2xl bg-slate-950 p-1.5 border border-slate-800 print:hidden">
           <button
             type="button"
             onClick={() => setActiveTab('card')}
@@ -252,8 +227,7 @@ export const RegistrationSuccessModal: React.FC<RegistrationSuccessModalProps> =
             }`}
           >
             <CreditCard className="w-4 h-4" />
-            2. Smart ID Card (Unique QR Code)
-            1. Smart Mother ID Card (PVC Format)
+            <span>Smart Mother ID Card</span>
           </button>
           <button
             type="button"
@@ -265,8 +239,7 @@ export const RegistrationSuccessModal: React.FC<RegistrationSuccessModalProps> =
             }`}
           >
             <FileText className="w-4 h-4" />
-            1. Acknowledgement (PDF Download / Print)
-            2. Registration Acknowledgement
+            <span>Registration Acknowledgement</span>
           </button>
         </div>
 
@@ -282,45 +255,32 @@ export const RegistrationSuccessModal: React.FC<RegistrationSuccessModalProps> =
         {/* Bottom Bar (Hidden in Print) */}
         <div className="pt-4 border-t border-slate-800 flex flex-wrap items-center justify-between gap-4 print:hidden">
           <div className="text-xs text-slate-300 font-mono">
-            Generated Mother Code: <span className="text-emerald-400 font-bold text-sm bg-emerald-500/10 border border-emerald-500/30 px-2.5 py-1 rounded-lg ml-1">{motherId}</span>
+            Mother Code: <span className="text-emerald-400 font-bold text-sm bg-emerald-500/10 border border-emerald-500/30 px-2.5 py-1 rounded-lg ml-1">{motherId}</span>
           </div>
 
           <div className="flex flex-wrap items-center gap-3 w-full sm:w-auto">
-            {/* View Mother Profile */}
-            <button
-              type="button"
-              onClick={handleViewProfile}
-              className="flex-1 sm:flex-none px-6 py-3.5 bg-gradient-to-r from-emerald-500 to-teal-400 hover:from-emerald-400 hover:to-teal-300 text-slate-950 font-black text-xs uppercase tracking-wider rounded-xl shadow-lg flex items-center justify-center gap-2 transform hover:-translate-y-0.5 transition"
-        {/* Action Buttons & Bottom Bar */}
-        <div className="pt-3 border-t border-slate-800 flex flex-wrap items-center justify-between gap-3 print:hidden">
-          <div className="text-xs text-slate-400 font-mono">
-            Mother ID: <span className="text-emerald-400 font-bold">{motherId}</span>
-          </div>
-
-          <div className="flex flex-wrap items-center gap-2.5 w-full sm:w-auto">
             <button
               type="button"
               onClick={handlePrint}
-              className="py-2.5 px-4 bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold text-xs rounded-xl border border-slate-700 flex items-center justify-center gap-2"
+              className="py-2.5 px-4 bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold text-xs rounded-xl border border-slate-700 flex items-center justify-center gap-2 cursor-pointer"
             >
               <Printer className="w-4 h-4 text-teal-400" />
-              Print Document
+              <span>Print Document</span>
             </button>
             <button
               type="button"
               onClick={handleViewProfile}
-              className="flex-1 sm:flex-none px-5 py-2.5 bg-gradient-to-r from-emerald-500 to-teal-400 hover:from-emerald-400 hover:to-teal-300 text-slate-950 font-black text-xs uppercase tracking-wider rounded-xl shadow-lg flex items-center justify-center gap-2"
+              className="flex-1 sm:flex-none px-5 py-2.5 bg-gradient-to-r from-emerald-500 to-teal-400 hover:from-emerald-400 hover:to-teal-300 text-slate-950 font-black text-xs uppercase tracking-wider rounded-xl shadow-lg flex items-center justify-center gap-2 cursor-pointer"
             >
               <ExternalLink className="w-4 h-4" />
-              Open Mother Profile
+              <span>Open Mother Profile</span>
             </button>
             <button
               type="button"
               onClick={onClose}
-              className="px-8 py-3.5 bg-slate-800 hover:bg-slate-700 text-slate-200 hover:text-white font-bold text-xs uppercase tracking-wider rounded-xl border border-slate-700 transition"
-              className="px-6 py-2.5 bg-slate-800 hover:bg-slate-700 text-slate-300 hover:text-white font-bold text-xs rounded-xl border border-slate-700"
+              className="px-6 py-2.5 bg-slate-800 hover:bg-slate-700 text-slate-300 hover:text-white font-bold text-xs rounded-xl border border-slate-700 cursor-pointer"
             >
-              Done
+              <span>Close</span>
             </button>
           </div>
         </div>
