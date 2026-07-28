@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
-import { PhoneCall, ShieldCheck, UserCheck, Menu, X, HeartPulse } from 'lucide-react';
+import { PhoneCall, ShieldCheck, UserCheck, Menu, X, HeartPulse, Award } from 'lucide-react';
 import { LanguageSelector } from '../LanguageSelector';
 
 interface GovernmentHeaderProps {
@@ -121,8 +121,16 @@ export const GovernmentHeader: React.FC<GovernmentHeaderProps> = ({ onOpenLogin 
           {/* Right Action Buttons */}
           <div className="hidden sm:flex items-center gap-2.5 sm:gap-3 shrink-0">
             <button
+              onClick={() => navigate('/child-welfare-hub')}
+              className="px-3.5 py-2 rounded-xl bg-gradient-to-r from-amber-500/20 to-emerald-500/20 border border-amber-500/40 text-amber-300 font-extrabold text-xs transition-all flex items-center gap-1.5 shadow-sm hover:border-amber-400 cursor-pointer"
+            >
+              <Award className="w-4 h-4 text-amber-400 shrink-0" />
+              <span>Govt Welfare Hub</span>
+            </button>
+
+            <button
               onClick={() => navigate('/track')}
-              className="px-3.5 py-2 rounded-xl border border-slate-700 bg-slate-900 hover:bg-slate-800 text-slate-200 text-xs font-semibold transition-all flex items-center gap-1.5 shadow-sm"
+              className="px-3.5 py-2 rounded-xl border border-slate-700 bg-slate-900 hover:bg-slate-800 text-slate-200 text-xs font-semibold transition-all flex items-center gap-1.5 shadow-sm cursor-pointer"
             >
               <ShieldCheck className="w-3.5 h-3.5 text-emerald-400 shrink-0" />
               <span>{t('header.motherPortal', 'Mother Portal')}</span>
@@ -193,6 +201,13 @@ export const GovernmentHeader: React.FC<GovernmentHeaderProps> = ({ onOpenLogin 
             </button>
           </nav>
           <div className="pt-3 border-t border-slate-900 flex flex-col gap-2.5">
+            <button
+              onClick={() => { setMobileMenuOpen(false); navigate('/child-welfare-hub'); }}
+              className="w-full py-3 rounded-xl bg-gradient-to-r from-amber-500/20 to-emerald-500/20 border border-amber-500/40 text-amber-300 font-extrabold text-xs text-center flex items-center justify-center gap-2 shadow-sm"
+            >
+              <Award className="w-4 h-4 text-amber-400 shrink-0" />
+              <span>Govt Benefits & Welfare Hub</span>
+            </button>
             <button
               onClick={() => { setMobileMenuOpen(false); navigate('/track'); }}
               className="w-full py-3 rounded-xl border border-slate-700 bg-slate-900 hover:bg-slate-800 text-slate-200 text-xs font-bold text-center flex items-center justify-center gap-2 shadow-sm"

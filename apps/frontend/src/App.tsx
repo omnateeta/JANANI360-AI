@@ -178,22 +178,8 @@ export const App: React.FC = () => {
             </ProtectedRoute>
           } 
         />
-        <Route 
-          path="/child-welfare-hub/:id" 
-          element={
-            <ProtectedRoute>
-              <GovernmentChildWelfareHubPage />
-            </ProtectedRoute>
-          } 
-        />
-        <Route 
-          path="/child-welfare-hub" 
-          element={
-            <ProtectedRoute>
-              <GovernmentChildWelfareHubPage />
-            </ProtectedRoute>
-          } 
-        />
+        <Route path="/child-welfare-hub/:id" element={<GovernmentChildWelfareHubPage />} />
+        <Route path="/child-welfare-hub" element={<GovernmentChildWelfareHubPage />} />
         <Route 
           path="/command-center" 
           element={

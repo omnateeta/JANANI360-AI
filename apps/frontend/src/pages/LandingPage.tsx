@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { GovernmentHeader } from '../components/landing/GovernmentHeader';
 import { HeroSection } from '../components/landing/HeroSection';
+import { GovernmentWelfareBannerSection } from '../components/landing/GovernmentWelfareBannerSection';
 import { OverviewSection } from '../components/landing/OverviewSection';
 import { FeaturesSection } from '../components/landing/FeaturesSection';
 import { StakeholdersSection } from '../components/landing/StakeholdersSection';
@@ -35,6 +36,7 @@ export const LandingPage: React.FC = () => {
       {/* Main Landing Page Content Flow */}
       <main className="flex-grow space-y-0">
         <HeroSection onOpenLogin={() => handleOpenLogin()} />
+        <GovernmentWelfareBannerSection />
         <OverviewSection />
         <FeaturesSection />
         <StakeholdersSection onOpenLoginWithRole={(role) => handleOpenLogin(role)} />
