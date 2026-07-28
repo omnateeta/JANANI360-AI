@@ -37,9 +37,7 @@ api.interceptors.response.use(
             return axios(originalRequest);
           }
         } catch (refreshErr) {
-          localStorage.removeItem('janani_access_token');
-          localStorage.removeItem('janani_refresh_token');
-          window.location.href = '/login';
+          console.warn('⚠️ Token refresh failed. Preserving local session state.');
         }
       }
     }

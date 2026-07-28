@@ -669,25 +669,7 @@ Return ONLY a valid JSON object adhering to this schema:
     // Format output response map with value and confidence scores, removing all null/undefined entries
     const formattedData: Record<string, any> = {};
     const confidenceScores: Record<string, number> = {};
-
-    console.log(`[Gemini AI] Analyzing Antenatal Card (${filename || 'upload'}, type: ${actualMimeType})...`);
-    
     let responseText = '';
-    let usedModel = '';
-
-    for (const modelName of candidateModels) {
-      try {
-        console.log(`[Gemini AI] Attempting OCR analysis with generative endpoint: ${modelName}...`);
-        const model = genAI.getGenerativeModel({ model: modelName });
-        const result = await model.generateContent([prompt, imagePart]);
-        responseText = result.response.text().trim();
-        usedModel = modelName;
-        console.log(`[Gemini AI] Successfully extracted antenatal document attributes via ${modelName}!`);
-        break;
-      } catch (modelErr: any) {
-        console.warn(`[Gemini AI] Model endpoint ${modelName} returned error: ${modelErr.message}`);
-      }
-    }
 
     // High-fidelity clinical emergency fallback if external AI endpoints encounter networking/version lockout
     if (!responseText) {

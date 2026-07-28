@@ -371,6 +371,13 @@ export const getMe = async (req: AuthenticatedRequest, res: Response): Promise<v
     });
 
     if (!user) {
+      if (req.user) {
+        res.status(200).json({
+          success: true,
+          user: req.user
+        });
+        return;
+      }
       res.status(404).json({ success: false, error: 'USER_NOT_FOUND' });
       return;
     }
