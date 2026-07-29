@@ -269,7 +269,7 @@ cd JANANI360-AI
 Frontend
 
 ```bash
-cd apps/frontend
+cd apps/frontend   
 npm install
 ```
 
