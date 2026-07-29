@@ -4,7 +4,7 @@
 
 ---
 
-# 📖 Overview
+# 📖 Overview  
 
 JANANI360 AI is a full-stack healthcare platform designed to improve maternal and child healthcare by connecting frontline health workers, doctors, hospitals, ambulance services, and health administrators into one unified digital ecosystem.
 
@@ -14,7 +14,7 @@ Rather than functioning as a standalone AI application, JANANI360 AI acts as a c
 
 ---
 
-# 🎯 Problem Statement
+# 🎯 Problem Statement. 
 
 Maternal healthcare in many regions faces several challenges:
 
