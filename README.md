@@ -2,7 +2,7 @@
 
 > AI-Powered Maternal & Child Healthcare Ecosystem for Smart Pregnancy Monitoring, Emergency Referrals, and Public Health Management.
 
----
+-
 
 # 📖 Overview  
 
@@ -12,7 +12,7 @@ The platform helps identify high-risk pregnancies early using an AI-powered Clin
 
 Rather than functioning as a standalone AI application, JANANI360 AI acts as a connected healthcare operating platform where AI assists healthcare professionals by providing risk analysis and clinical recommendations.
 
----
+-
 
 # 🎯 Problem Statement. 
 
